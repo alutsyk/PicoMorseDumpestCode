@@ -19,22 +19,25 @@ def blink(intrvl):
     led.on()
     sleep(intrvl)
     led.off()
-    sleep(unt * 3)
+    sleep(unt)
 
 def dot():
     blink(unt)
     
 def dash():
-    blink(unt * 4)
+    blink(unt * 3)
     
 def space():
     sleep(unt * 7)
+    
+def charpause():
+    sleep(unt * 3)
 
 def encryptMsg(msg):
     encrypted = ''
     for c in msg.upper():
         if c != ' ':
-            encrypted = encrypted + CHARS_CODES[c] + ' '
+            encrypted = encrypted + CHARS_CODES[c] + '_'
         else:
             encrypted = encrypted + ' '
             
@@ -43,5 +46,7 @@ def encryptMsg(msg):
             dot()
         elif code == '-':
             dash()
+        elif code == '_':
+            charpause()            
         else:
             space()
